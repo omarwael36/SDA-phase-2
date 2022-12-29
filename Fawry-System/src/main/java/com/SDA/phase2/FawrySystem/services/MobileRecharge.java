@@ -1,4 +1,7 @@
 package com.SDA.phase2.FawrySystem.services;
 
-public class MobileRecharge {
+public class MobileRecharge  extends service{
+    public double cost(ServiceProvider sp,double amount){
+        return (amount + (amount*sp.getTax()));
+    }
 }
