@@ -6,6 +6,7 @@ public class ServiceInfo {
     private int Index = 0;
     private String Name;
     private double Amount;
+    private boolean CashOnDelivery;
     public ArrayList<ServiceProvider> SP = new ArrayList<ServiceProvider>();
     public ServiceInfo(){
         Index++;
@@ -48,5 +49,13 @@ public class ServiceInfo {
 
     public void setAmount(double amount) {
         Amount = amount;
+    }
+
+    public boolean isCashOnDelivery() {
+        return CashOnDelivery;
+    }
+
+    public void setCashOnDelivery(boolean cashOnDelivery) {
+        CashOnDelivery = cashOnDelivery;
     }
 }
