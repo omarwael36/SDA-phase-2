@@ -1,8 +1,8 @@
-package com.SDA.phase2.FawrySystem.User;
+package com.SDA.phase2.FawrySystem.Refund;
 
 public class Transactions
 {
-     int id = 0 ;
+     public int id = 0 ;
     public String Time , Source , Ownername;
 
     boolean approved = false;
