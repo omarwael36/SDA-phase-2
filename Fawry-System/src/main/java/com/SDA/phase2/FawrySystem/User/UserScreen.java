@@ -39,20 +39,22 @@ public class UserScreen {
         System.out.print("Please enter Username to complete the process");
         Scanner obj = new Scanner (System.in);
         String username = obj.next();
+        boolean found = false;
 
-        for (int i = 0 ; i < s.Users.size() ; i++)
-        {
+        for (int i = 0 ; i < s.Users.size() ; i++) {
             if (username == s.Users.get(i).username)
             {
-              /* for (int j = 0 ; i< s.Users.get(i).Utansactions.size() ; i++)
+                for (int j = 0; i < s.Users.get(i).UTransactions.size(); i++)
                 {
-                    System.out.print(Utransactions.get(j);)
+                    System.out.print(s.Users.get(i).UTransactions.get(j));
                 }
-
-               */
+                found = true;
             }
         }
-
+        if (found == false)
+        {
+            System.out.print("Username not found !!");
+        }
     }
 
 }

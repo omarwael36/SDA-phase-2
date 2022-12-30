@@ -38,12 +38,26 @@ public class UserController {
             }
         }
         return false;
-
     }
-
-    public void Requestrefund ()
+    public void Requestrefund (int id , String usrname)
     {
-
+        for (int i = 0 ; i < Users.size() ; i++ )
+        {
+            if (Users.get(i).getusername() == usrname)
+            {
+                for (int j = 0 ; j < Users.get(i).UTransactions.size() ; j++)
+                {
+                    if (Users.get(i).UTransactions.get(j).id == id )
+                    {
+                       Transactions ss = new Transactions();
+                       ss.Ownername = usrname;
+                       ss.id = id;
+                       RefundRequest a = new RefundRequest();
+                       a.Refundreq.add(ss);
+                    }
+                }
+            }
+        }
     }
 
 }

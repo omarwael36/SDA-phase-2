@@ -1,5 +1,6 @@
 package com.SDA.phase2.FawrySystem.User;
 
+import java.util.ArrayList;
 
 public class Userinfo {
 
@@ -7,9 +8,11 @@ public class Userinfo {
     private String password;
     public String username ;
     private String address;
+    ArrayList<Transactions> UTransactions = new ArrayList <Transactions> () ;
+
     //Creditcard Ucredit = new Creditcard;
     //Wallet Uwallet = new Wallet;
-    //ArrayList <Transactions> UTransactions = new ArrayList <Transactions> () ;
+
 
 
     public void setemail (String mail)
