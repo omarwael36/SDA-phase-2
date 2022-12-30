@@ -2,7 +2,7 @@ package com.SDA.phase2.FawrySystem.Refund;
 
 public class RefundController
 {
-    RefundRequest Req ;
+ public  RefundRequest Req ;
 
     public void Refundwallet (int id)
     {
