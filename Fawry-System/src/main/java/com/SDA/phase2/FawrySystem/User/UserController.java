@@ -1,4 +1,6 @@
 package com.SDA.phase2.FawrySystem.User;
+import com.SDA.phase2.FawrySystem.Payment.CreditCard;
+import com.SDA.phase2.FawrySystem.Payment.Wallet;
 import com.SDA.phase2.FawrySystem.Refund.RefundRequest;
 import com.SDA.phase2.FawrySystem.Refund.Transactions;
 import org.springframework.stereotype.Service;
@@ -11,7 +13,16 @@ public class UserController {
 
     public ArrayList <Userinfo> Users = new ArrayList <Userinfo> () ;
 
-    public boolean SignUp (String email ,String username, String pass,String address)
+    public UserController() {
+        Userinfo ui1 = new Userinfo("omarwael@gmail.com","123456","omarwael","cairo,egypt");
+        Wallet w = new Wallet(1,200);
+        ui1.setUwallet(w);
+        CreditCard cc = new CreditCard("12345","2025/5","5235",5000);
+        ui1.setUcredit(cc);
+        Users.add(ui1);
+    }
+
+    public boolean SignUp (String email , String username, String pass, String address)
     {
         for (int i = 0; i < Users.size(); i++) {
             if (Objects.equals(email, Users.get(i).getemail())) {

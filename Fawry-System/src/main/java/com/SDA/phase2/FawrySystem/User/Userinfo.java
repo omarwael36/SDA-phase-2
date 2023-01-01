@@ -1,5 +1,7 @@
 package com.SDA.phase2.FawrySystem.User;
 
+import com.SDA.phase2.FawrySystem.Payment.CreditCard;
+import com.SDA.phase2.FawrySystem.Payment.Wallet;
 import com.SDA.phase2.FawrySystem.Refund.Transactions;
 
 import java.util.ArrayList;
@@ -11,15 +13,16 @@ public class Userinfo {
     private String address;
     ArrayList<Transactions> UTransactions = new ArrayList <Transactions> () ;
 
-    //Creditcard Ucredit = new Creditcard;
-    //Wallet Uwallet = new Wallet;
+    CreditCard Ucredit = new CreditCard();
+    Wallet Uwallet = new Wallet();
 
-    public Userinfo(String email, String password, String username, String address, ArrayList<Transactions> UTransactions) {
+
+
+    public Userinfo(String email, String password, String username, String address) {
         this.email = email;
         this.password = password;
         this.username = username;
         this.address = address;
-        this.UTransactions = UTransactions;
     }
 
     public Userinfo() {
@@ -56,7 +59,18 @@ public class Userinfo {
     public String getusername () {
         return username;
     }
+    public Wallet getUwallet() {
+        return Uwallet;
+    }
+    public void setUwallet(Wallet uwallet) {
+        Uwallet = uwallet;
+    }
 
+    public CreditCard getUcredit() {
+        return Ucredit;
+    }
 
-
+    public void setUcredit(CreditCard ucredit) {
+        Ucredit = ucredit;
+    }
 }
