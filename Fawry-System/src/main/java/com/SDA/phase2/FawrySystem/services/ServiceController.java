@@ -3,7 +3,7 @@ package com.SDA.phase2.FawrySystem.services;
 import java.util.ArrayList;
 
 
-
+@
 public class ServiceController {
     public ArrayList<DiscountInfo> Discounts = new ArrayList<DiscountInfo>();
     public ArrayList<ServiceInfo> services = new ArrayList<ServiceInfo>();
@@ -40,4 +40,5 @@ public class ServiceController {
             }
         }
     }
+
 }

@@ -1,40 +1,38 @@
 package com.SDA.phase2.FawrySystem.User;
 import com.SDA.phase2.FawrySystem.Refund.RefundRequest;
 import com.SDA.phase2.FawrySystem.Refund.Transactions;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
+@Service
 public class UserController {
 
     public ArrayList <Userinfo> Users = new ArrayList <Userinfo> () ;
 
-    public boolean SignUp (String mail , String pass)
+    public boolean SignUp (String email ,String username, String pass,String address)
     {
-        for (int i = 0; i < Users.size(); i++)
-        {
-            if (mail == Users.get(i).getemail())
-            {
+        for (int i = 0; i < Users.size(); i++) {
+            if (Objects.equals(email, Users.get(i).getemail())) {
                 return false;
             }
-            else
-            {
-                Userinfo New = new Userinfo();
-                New.setemail(mail);
-                New.setpassword(pass);
-                Users.add(New);
-                return true;
-            }
         }
-        return false;
+        Userinfo temp = new Userinfo();
+        temp.setemail(email);
+        temp.setpassword(pass);
+        temp.setusername(username);
+        temp.setAddress(address);
+        Users.add(temp);
+        return true;
     }
-
     public boolean Login (String mail , String pass)
     {
         for (int i = 0; i < Users.size(); i++)
         {
-            if (mail == Users.get(i).getemail())
+            if (Objects.equals(mail, Users.get(i).getemail()))
             {
-                if (pass == Users.get(i).getpassword())
+                if (Objects.equals(pass, Users.get(i).getpassword()))
                 {
                     return true;
                 }
