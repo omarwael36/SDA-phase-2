@@ -59,11 +59,11 @@ public class UserController {
             {
                 for (int j = 0 ; j < Users.get(i).UTransactions.size() ; j++)
                 {
-                    if (Users.get(i).UTransactions.get(j).id == id )
+                    if (Users.get(i).UTransactions.get(j).getId() == id )
                     {
                        Transactions ss = new Transactions();
-                       ss.Ownername = usrname;
-                       ss.id = id;
+                       ss.setOwnername(usrname);
+                       ss.setId(id);
                        RefundRequest a = new RefundRequest();
                        a.Refundreq.add(ss);
                     }
