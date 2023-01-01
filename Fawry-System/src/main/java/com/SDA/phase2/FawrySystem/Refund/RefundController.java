@@ -2,15 +2,15 @@ package com.SDA.phase2.FawrySystem.Refund;
 
 public class RefundController
 {
-    RefundRequest Req ;
+    public RefundRequest Req ;
 
     public void Refundwallet (int id)
     {
         for (int i = 0 ; i<Req.Refundreq.size() ; i++)
         {
-            if (Req.Refundreq.get(i).id == id)
+            if (Req.Refundreq.get(i).getId() == id)
             {
-                if (Req.Refundreq.get(i).approved==true)
+                if (Req.Refundreq.get(i).isApproved()==true)
                 {
                     //refund wallet;
                 }
@@ -23,9 +23,9 @@ public class RefundController
     {
         for (int i = 0 ; i<Req.Refundreq.size() ; i++)
         {
-            if (Req.Refundreq.get(i).id == id)
+            if (Req.Refundreq.get(i).getId() == id)
             {
-                if (Req.Refundreq.get(i).approved==true)
+                if (Req.Refundreq.get(i).isApproved()==true)
                 {
                     //refund Credit;
                 }
