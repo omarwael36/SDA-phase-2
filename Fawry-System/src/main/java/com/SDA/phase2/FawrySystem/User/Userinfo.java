@@ -69,8 +69,15 @@ public class Userinfo {
     public CreditCard getUcredit() {
         return Ucredit;
     }
-
     public void setUcredit(CreditCard ucredit) {
         Ucredit = ucredit;
+    }
+
+    public ArrayList<Transactions> getUTransactions() {
+        return UTransactions;
+    }
+
+    public void setUTransactions(ArrayList<Transactions> UTransactions) {
+        this.UTransactions = UTransactions;
     }
 }
