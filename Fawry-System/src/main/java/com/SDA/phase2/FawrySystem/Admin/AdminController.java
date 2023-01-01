@@ -10,7 +10,7 @@ public class AdminController {
     RefundController refund = new RefundController();
     public void AddnewSP ()
     {
-        
+
     }
     public void AddDiscount (double rate, String name, String type, int ID,String dison)
     {
