@@ -5,7 +5,11 @@ public class OverallDiscount extends Discount{
         super(ser);
     }
 
-    public double cost(ServiceProvider sp, double amount){
-        return ser.cost(sp,amount) - (ser.cost(sp,amount)* this.DI.getRate());
+    public OverallDiscount(ServiceController sc, service ser) {
+        super(sc, ser);
+    }
+
+    public double cost(ServiceProvider sp, double amount, double dis){
+        return ser.cost(sp,amount,dis) - (ser.cost(sp,amount,dis)* dis);
     }
 }

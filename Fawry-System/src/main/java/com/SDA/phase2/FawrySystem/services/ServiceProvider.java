@@ -4,10 +4,21 @@ public class ServiceProvider {
     private String Name;
     private double Tax;
     private int SPID;
-    public ServiceProvider(String name,double tax){
-        this.Name = name;
-        this.Tax = tax;
+
+    public ServiceProvider() {
     }
+
+    public ServiceProvider(String name, double tax) {
+        Name = name;
+        Tax = tax;
+    }
+
+    public ServiceProvider(String name, double tax, int SPID) {
+        Name = name;
+        Tax = tax;
+        this.SPID = SPID;
+    }
+
     public String getName() {
         return Name;
     }
