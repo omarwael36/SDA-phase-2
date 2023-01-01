@@ -16,13 +16,53 @@ public class ServiceAPI {
     }
 
     @PostMapping(value = "/services/SearchService")
-    public String SearchService(@RequestParam String key){
-        if(sc.SearchService(key)){
-            return "found the result !!";
-        }
-        else{
-            return "Not found !!";
-        }
+    public ArrayList<String> SearchService(@RequestParam String key){
+        return sc.SearchService(key);
     }
+    @PostMapping(value = "/services/SelectSP")
+    public Object SelectSP(@RequestParam int spid , String servicename){
+       return sc.SelectSP(spid,servicename);
+    }
+    @GetMapping(value = "/services/DisplayDiscount")
+    public ArrayList<DiscountInfo> DisplayDiscount(){
+        return sc.getDiscounts();
+    }
+    @PostMapping(value = "/services/SelectService")
+    public Object SelectService(@RequestParam int id){
+        return sc.SelectService(id);
+    }
+    @PostMapping(value = "/services/SelectDiscount")
+    public Object SelectDiscount(@RequestParam int id){
+        return sc.SelectDiscount(id);
+    }
+    @PostMapping(value = "/services/DisplayCost")
+    public double DisplayCost(@RequestParam double amount , String servicename,int spid,int llchoice,int disID){
+        double price = 0;
+        if(servicename.equals("Mobile recharge")){
+            service mc = new MobileRecharge();
+            Discount oad = new OverallDiscount(sc , mc);
+            price = oad.cost(sc.SelectSP(spid,servicename),amount,sc.SelectDiscount(disID));
+        }
+        else if(servicename.equals("Internet payment")){
+            service ip = new InternetPayment(sc);
+            Discount sd = new SpecificDiscount(sc,ip);
+            price = sd.cost(sc.SelectSP(spid,servicename),amount,sc.SelectDiscount(disID));
+        }
+        else if(servicename.equals("Landline")){
+                if(llchoice == 1){
+                    service qr = new QuarterReceipt(sc);
+                    qr.cost(sc.SelectSP(spid, servicename),amount,sc.SelectDiscount(disID));
+                }
+                else if(llchoice == 2){
+                    service mr = new MonthlyReceipt(sc);
+                    mr.cost(sc.SelectSP(spid, servicename),amount,sc.SelectDiscount(disID));
+                }
+        }
+        else if(servicename.equals("Donations")){
+            service don = new Donations(sc);
+            don.cost(sc.SelectSP(spid, servicename),amount,sc.SelectDiscount(disID));
+        }
 
+        return sc.UpdatePrice(price,servicename);
+    }
 }

@@ -4,6 +4,28 @@ public class DiscountInfo {
     private double Rate;
     private String Name;
     private String Type;
+    private int ID;
+    private String DiscountOn;
+
+    public String getDiscountOn() {
+        return DiscountOn;
+    }
+
+    public void setDiscountOn(String discountOn) {
+        DiscountOn = discountOn;
+    }
+
+    public DiscountInfo() {
+    }
+
+    public DiscountInfo(double rate, String name, String type, int ID,String dison) {
+        Rate = rate;
+        Name = name;
+        Type = type;
+        this.ID = ID;
+        this.DiscountOn = dison;
+    }
+
 
     public double getRate() {
         return Rate;
@@ -27,5 +49,13 @@ public class DiscountInfo {
 
     public void setType(String type) {
         Type = type;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }

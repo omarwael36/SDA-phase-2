@@ -3,6 +3,7 @@ package com.SDA.phase2.FawrySystem.services;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 @Service
@@ -47,7 +48,7 @@ public class ServiceController {
 
         ServiceInfo s4 = new ServiceInfo();
         s4.setName("Donations");
-        s4.setIndex(2);
+        s4.setIndex(4);
         s4.setCashOnDelivery(false);
         ServiceProvider sp001 = new ServiceProvider("Cancer Hospitals",0.10,1);
         s4.SP.add(sp001);
@@ -55,22 +56,33 @@ public class ServiceController {
         s4.SP.add(sp002);
         ServiceProvider sp003 = new ServiceProvider("NGOs (Non profitable organizations)",0.10,3);
         s4.SP.add(sp003);
-
         services.add(s4);
 
+        DiscountInfo di1 = new DiscountInfo(0.5,"First Transaction","Overall Discount",1,"Mobile recharge");
+        Discounts.add(di1);
+        DiscountInfo di2 = new DiscountInfo(0.2,"sale","Specific Discount",2,"Internet payment");
+        Discounts.add(di2);
+
+
     }
-    public boolean SearchService(String key){
+    public ArrayList<String> SearchService(String key){
         boolean flag = false;
+        ArrayList<String> match = new ArrayList<String>();
+        match.clear();
         for(int i =0;i<services.size();i++) {
-            if(services.get(i).getName().compareTo(key)>=0) {
-                flag=true;
+            if(services.get(i).getName().equals(key)) {
+                flag = true;
+                match.add(services.get(i).getName());
             }
         }
-        return flag;
+        if(flag==false) {
+            match.add("Not found");
+        }
+        return match;
     }
-    public Object SelectSP(int spid, String serviceName){
+    public ServiceProvider SelectSP(int spid, String serviceName){
         for(int i = 0; i<services.size();i++){
-            if(services.get(i).getName()==serviceName){
+            if(Objects.equals(services.get(i).getName(), serviceName)){
                 for(int j = 0 ; j<services.get(i).SP.size() ; j++){
                     if(services.get(i).SP.get(j).getSPID()==spid){
                         return services.get(i).SP.get(j);
@@ -81,12 +93,14 @@ public class ServiceController {
        ServiceProvider sp = new ServiceProvider("not found ",0,0);
         return sp;
     }
-    public void UpdatePrice(double amount,String serviceName){
+    public double UpdatePrice(double amount,String serviceName){
         for(int i = 0; i<services.size();i++){
-            if(services.get(i).getName()==serviceName){
+            if(Objects.equals(services.get(i).getName(), serviceName)){
                 services.get(i).setAmount(amount);
+                return services.get(i).getAmount();
             }
         }
+        return 0;
     }
     public String SelectService(int id){
         for(int i = 0 ; i<services.size();i++){
@@ -96,7 +110,19 @@ public class ServiceController {
         }
         return "";
     }
+    public double SelectDiscount(int id){
+        for(int i = 0 ; i<Discounts.size();i++){
+            if(Discounts.get(i).getID()==id){
+                return Discounts.get(i).getRate();
+            }
+        }
+        return 0;
+    }
     public ArrayList<ServiceInfo> getServices() {
         return services;
+    }
+
+    public ArrayList<DiscountInfo> getDiscounts() {
+        return Discounts;
     }
 }
