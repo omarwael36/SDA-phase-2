@@ -4,6 +4,11 @@ public class AdminController
 {
     public void ADDNewSP()
     {
+        // create new SP using Admin info
+        AdminInfo adminInfo = new AdminInfo();
+        adminInfo.Username = "Admin";
+        adminInfo.Password = "1234";
+        adminInfo.Email = "admin@gmail.com";
         System.out.println("Add New Service Provider");
     }
     public void ADDDiscount()
